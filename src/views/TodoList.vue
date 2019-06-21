@@ -14,6 +14,7 @@
 <script>
 import Todo from "@/components/Todo.vue";
 import TodoForm from "@/components/TodoForm.vue";
+import axios from "axios";
 export default {
   data() {
     return {
@@ -30,6 +31,17 @@ export default {
     },
     addTodo(todo) {
       this.todoList.push(todo);
+      axios
+        .put(
+          "https://alia0021-vue-axios.firebaseio.com/data.json",
+          this.todoList
+        )
+        .then(response => {
+          console.log("Your data was saved status: " + response.status);
+        }) //if the put is successfull then "then" will run if not "catch" will run
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 };
