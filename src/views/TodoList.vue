@@ -65,7 +65,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style>
 ul {
   list-style: none;
   width: 50%;
